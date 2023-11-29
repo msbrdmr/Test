@@ -15,6 +15,11 @@ export const Profile = () => {
 export const Forms = () => {
 	return <div style={pageStyle}>Forms Page</div>;
 };
+// Home.js
+
+export const Home = () => {
+	return <div style={pageStyle}>Home Page</div>;
+};
 
 // SignIn.js
 
@@ -34,4 +39,7 @@ export const Settings = () => {
 	return <div style={pageStyle}>Settings Page</div>;
 };
 
-
+//Empty
+export const Empty = () => {
+	return <div style={pageStyle}>Empty</div>;
+};

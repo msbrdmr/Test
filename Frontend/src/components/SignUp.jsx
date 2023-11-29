@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Grid, TextField, FormControlLabel, Checkbox } from "@mui/material";
 
-function Sign() {
+function SignUp() {
   return (
     <form>
       <Grid container spacing={2} justifyContent="center">
@@ -47,4 +47,4 @@ function Sign() {
   );
 }
 
-export default Sign;
+export default SignUp;

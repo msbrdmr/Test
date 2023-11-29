@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Button, Grid, Paper } from "@mui/material";
 import Login from "../components/Login";
-import Sign from "../components/Sign";
+import SignUp from "../components/SignUp";
 
 
-function HomeLogin() {
+function RegisterPage() {
   const [formType, setFormType] = useState("login");
 
   const formStyle = {
@@ -61,7 +61,7 @@ function HomeLogin() {
             padding: "20px",
           }}
         >
-          {formType === "log in" ? <Login /> : <Sign />}
+          {formType === "log in" ? <Login /> : <SignUp />}
         </Grid>
         <div style={buttonContainerStyle}>
           <Button
@@ -86,4 +86,4 @@ function HomeLogin() {
   );
 }
 
-export default HomeLogin;
+export default RegisterPage;

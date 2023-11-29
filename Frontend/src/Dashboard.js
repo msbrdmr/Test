@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, } from "antd";
+
+import {ProfileButton} from "./components/profile"
 import {
   UserOutlined,
   FormOutlined,
@@ -7,6 +9,7 @@ import {
   LogoutOutlined,
   SettingOutlined,
   MenuFoldOutlined,
+  HomeOutlined
 } from "@ant-design/icons";
 import { Link, Outlet } from "react-router-dom";
 const menuItemFoldStyle = {
@@ -33,20 +36,35 @@ const Dashboard = () => {
   return (
     <>
       <Layout style={{ minHeight: "100vh" }}>
-        <Header
+	  <Header
           style={{
             borderRadius: "10px 10px 0px 0px",
             display: "flex",
             alignItems: "center",
-            backgroundColor: "#0f0f11",
+            justifyContent: "space-between",
+            backgroundColor: "#c5c5c5",
+			padding: "0px"
           }}
         >
+          {/* Logo Area */}
+          <div style={{ marginRight: "auto" }}>
+            <img
+              src="https://i.imgur.com/MgnwjM9.png"
+              alt="Logo"
+              style={{ marginTop:"25px" ,height: "68px", width: "auto" }}
+            />
+          </div>
+
+          {/* Menu */}
           <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]} />
+
+          {/* Profile Area */}
+          <ProfileButton imageUrl="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
         </Header>
 
         <Layout>
           <Sider
-            style={{ border: "2px solid black" }}
+            style={{ borderRight: "1px solid #cfcfcf" ,borderLeft: "1px solid #cfcfcf",borderBottom: "1px solid #cfcfcf"  }}
             width={navbarWidth}
             theme="light"
           >
@@ -68,37 +86,44 @@ const Dashboard = () => {
               >
                 <Link to="/profile">Profile</Link>
               </Menu.Item>
-              <Menu.Item
+			  <Menu.Item
                 style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
                 key="2"
+                icon={<HomeOutlined />}
+              >
+                <Link to="/home">Home</Link>
+              </Menu.Item>
+              <Menu.Item
+                style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
+                key="3"
                 icon={<FormOutlined />}
               >
                 <Link to="/forms">Forms</Link>
               </Menu.Item>
               <Menu.Item
                 style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
-                key="3"
+                key="4"
                 icon={<LoginOutlined />}
               >
                 <Link to="/login">Sign In</Link>
               </Menu.Item>
               <Menu.Item
                 style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
-                key="4"
+                key="5"
                 icon={<LogoutOutlined />}
               >
                 <Link to="/signup">Sign Up</Link>
               </Menu.Item>
               <Menu.Item
                 style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
-                key="5"
+                key="6"
                 icon={<SettingOutlined />}
               >
                 <Link to="/settings">Settings</Link>
               </Menu.Item>
               <Menu.Item
                 onClick={changeFold}
-                key="6"
+                key="7"
                 icon={<MenuFoldOutlined />}
                 style={{
                   marginTop: "auto",
@@ -114,7 +139,7 @@ const Dashboard = () => {
                 display: "flex",
                 flexDirection: "column",
                 padding: "16px",
-                border: "1px solid red",
+                borderRight: "1px solid #cfcfcf"
               }}
             >
               <div>
