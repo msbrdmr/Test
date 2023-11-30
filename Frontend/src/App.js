@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import * as pages from "./pages/Pages";
+import { Profile } from "./pages/Profile";
+import { Home } from "./pages/Home";
 import RegisterPage from "./pages/Register";
 import "../src/assets/styles/index.css";
 function App() {
@@ -16,9 +18,9 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Dashboard darkMode={darkMode} handleDarkModeChange={handleDarkModeChange} />}>
 					<Route index element={<pages.Profile />} />
-					<Route path="/profile" element={<pages.Profile />} />
+					<Route path="/profile" element={<Profile />} />
 					<Route path="/forms" element={<pages.Forms />} />
-					<Route path="/home" element={<pages.Home />} />
+					<Route path="/home" element={<Home />} />
 					<Route path="/login" element={<RegisterPage></RegisterPage>}></Route>
 					<Route path="/signup" element={<pages.SignUp />} />
 					<Route path="/settings" element={<pages.Settings />} />
