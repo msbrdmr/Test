@@ -1,7 +1,22 @@
 import React, { useState } from "react";
-import { Button, Avatar, notification, App } from "antd";
-import { SettingTwoTone, UserOutlined, MessageTwoTone, MailTwoTone, SnippetsTwoTone, EditOutlined } from "@ant-design/icons";
+import { Button, Avatar, notification, Popover, App } from "antd";
+import {
+    SettingTwoTone,
+    UserOutlined,
+    MessageTwoTone,
+    MailTwoTone,
+    SnippetsTwoTone,
+    EditOutlined,
+} from "@ant-design/icons";
 import "../assets/styles/profile.css";
+
+const contentMap = {
+    message: "Message Inbox",
+    snippets: "Snippets Inbox",
+    mail: "Mail Inbox",
+    setting: "Settings",
+};
+
 export const ProfileButtonArea = ({ imageUrl, userName }) => {
     const { modal } = App.useApp();
     const [isHovered, setHovered] = useState(false);
@@ -13,43 +28,56 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
     const handleUnhover = () => {
         setHovered(false);
     };
+
     const handleEditClick = () => {
         // Display Ant Design notification
         notification.info({
-            message: 'Good',
-            description: 'Hey',
-            placement: 'bottomLeft',
+            message: "Good",
+            description: "Hey",
+            placement: "bottomLeft",
         });
     };
 
+    const renderPopoverContent = (type) => (
+        <div>
+            <p>{contentMap[type]}</p>
+        </div>
+    );
 
     return (
         <div className="profile">
-
-            <Button
-                type="default"
-                icon={<MessageTwoTone />}
-                style={{ borderRadius: "25px" }}
-            >
-            </Button>
-            <Button
-                type="default"
-                icon={<SnippetsTwoTone />}
-                style={{ borderRadius: "25px" }}
-            >
-            </Button>
-            <Button
-                type="default"
-                icon={<MailTwoTone />}
-                style={{ borderRadius: "25px" }}
-            >
-            </Button>
-            <Button
-                type="default"
-                icon={<SettingTwoTone />}
-                style={{ borderRadius: "25px" }}
-            >
-            </Button>
+            <Popover content={renderPopoverContent("message")} trigger="hover">
+                <Button
+                    className="utility-button"
+                    type="default"
+                    icon={<MessageTwoTone />}
+                    style={{ borderRadius: "25px" }}
+                />
+            </Popover>
+            <Popover content={renderPopoverContent("snippets")} trigger="hover">
+                <Button
+                    className="utility-button"
+                    type="default"
+                    icon={<SnippetsTwoTone />}
+                    style={{ borderRadius: "25px" }}
+                />
+            </Popover>
+            <Popover content={renderPopoverContent("mail")} trigger="hover">
+                <Button
+                    className="utility-button"
+                    type="default"
+                    icon={<MailTwoTone />}
+                    style={{ borderRadius: "25px" }}
+                />
+            </Popover>
+            <Popover content={renderPopoverContent("setting")} trigger="hover">
+                <Button
+                    className="utility-button"
+                    type="default"
+                    icon={<SettingTwoTone />}
+                    style={{ borderRadius: "25px" }}
+                />
+            </Popover>
 
             <Button
                 type="default"
@@ -66,7 +94,9 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
                     transition: "0.05s",
                     height: "50px",
                     width: "50px",
-                    border: isHovered ? "3px solid rgba(0, 0, 0, 0.3)" : "1px solid white", // Add outline with less alpha on hover
+                    border: isHovered
+                        ? "3px solid rgba(0, 0, 0, 0.3)"
+                        : "1px solid white", // Add outline with less alpha on hover
                     position: "relative",
                     cursor: "pointer", // Change cursor to hand
                 }}

@@ -6,7 +6,7 @@ import RegisterPage from "./pages/Register";
 function App() {
 	return (
 		<Router>
-			{/* <Dashboard /> */}
+			
 			<Routes>
 				<Route path="/" element={<Dashboard />}>
 					<Route index element={<pages.Profile />} />

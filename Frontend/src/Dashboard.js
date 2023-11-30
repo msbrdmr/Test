@@ -11,23 +11,17 @@ const menuItemFoldStyle = {
 	alignItems: "center",
 	padding: "0px 0px 0px 10px ",
 	justifyContent: "center",
-	fontSize: 0, // Set font size to 0 to make text invisible
+	fontSize: 0,
 };
 const menuItemUnFoldStyle = {
-	// Adjusted to match the width of the Sider in Dashboard.js
 	padding: "0px 0px 0px 10px ",
 };
 const { Sider, Content, Header } = Layout;
 const UnfoldNavbarWidth = 150;
 const FoldNavbarWidth = 40;
 const Dashboard = () => {
-	const [fold, setFold] = useState(false);
-	const [navbarWidth, setNavbarWidth] = useState(UnfoldNavbarWidth);
-
-	const changeFold = () => {
-		setFold(!fold);
-		fold ? setNavbarWidth(UnfoldNavbarWidth) : setNavbarWidth(FoldNavbarWidth);
-	};
+	const [fold, setFold] = useState(true);
+	const [navbarWidth, setNavbarWidth] = useState(FoldNavbarWidth);
 
 	const handleMouseEnter = () => {
 		setFold(false);
@@ -39,33 +33,19 @@ const Dashboard = () => {
 		setNavbarWidth(FoldNavbarWidth);
 	};
 	return (
-		<>
-			<Layout style={{ minHeight: "100vh" }}>
-				<Header
-					className="header"
-					style={{
-						borderRadius: "3px 3px 0px 0px",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "space-between",
-						backgroundColor: "#c5c5c5",
-						padding: "0px",
-					}}
-				>
-					{/* Logo Area */}
+		<div>
+			<Layout style={{ minHeight: "80vh" }}>
+				<Header>
 					<div style={{ marginRight: "auto" }}>
 						<img src="https://i.imgur.com/MgnwjM9.png" alt="Logo" style={{ marginTop: "25px", height: "68px", width: "auto" }} />
 					</div>
-
-					{/* Menu */}
 					<Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]} />
 
-					{/* Profile Area */}
 					<ProfileButtonArea userName="John Doe" imageUrl="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
 				</Header>
 
 				<Layout>
-					<Sider style={{ boxShadow: "-5px 0px 10px rgba(0, 0, 0, 0.2)", borderRight: "1px solid #cfcfcf", borderLeft: "1px solid #cfcfcf", borderBottom: "1px solid #cfcfcf" }} width={navbarWidth} theme="light " onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+					<Sider style={{ borderRight: "1px solid #cfcfcf", borderLeft: "1px solid #cfcfcf", borderBottom: "1px solid #cfcfcf" }} width={navbarWidth} theme="light " onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 						<Menu
 							mode="vertical"
 							theme="light"
@@ -94,13 +74,6 @@ const Dashboard = () => {
 							<Menu.Item style={fold ? menuItemFoldStyle : menuItemUnFoldStyle} key="6" icon={<SettingOutlined />}>
 								<Link to="/settings">Settings</Link>
 							</Menu.Item>
-							{/* <Menu.Item
-								onClick={changeFold}
-								key="7"
-								icon={<MenuFoldOutlined />}
-								style={{
-								}}
-							></Menu.Item> */}
 						</Menu>
 					</Sider>
 					<Layout>
@@ -119,8 +92,7 @@ const Dashboard = () => {
 					</Layout>
 				</Layout>
 			</Layout>
-		</>
+		</div>
 	);
 };
-
 export default Dashboard;

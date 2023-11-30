@@ -1,14 +1,24 @@
-
 .profile {
 	display: flex;
 	align-items: center;
-	height: 50px;
-	width: fit-content;
+	justify-content: center;
+	height: 60px;
+	width: auto;
 	margin-right: 0px;
 	gap: 5px;
 }
 .profile-image {
-    transition: 0.05s;
+	transition: 0.05s;
 	top: 0px;
 	right: 15px;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Adjust values as needed */
+}
+
+.utility-button {
+	border-radius: 25px;
+	height: 32px;
+	width: 40px;
+	font-size: 16px;
+	margin: 5px;
+	padding: 0;
 }
