@@ -36,7 +36,7 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 	return (
 		<div>
 			<Layout style={{ minHeight: "80vh" }}>
-				<Header>
+				<Header style={{ background: darkMode ? "#001529" : "#FFF", color: darkMode ? "#FFF" : "#001529" }}>
 					<div style={{ marginRight: "auto" }}>
 						<img src="https://i.imgur.com/MgnwjM9.png" alt="Logo" style={{ marginTop: "25px", height: "68px", width: "auto" }} />
 					</div>
@@ -45,16 +45,15 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 
 					<Switch checked={darkMode} onChange={handleDarkModeChange} style={{ marginLeft: "10px", marginRight: "10px" }} />
 
-					<Menu theme="light" mode="horizontal" defaultSelectedKeys={["2"]} />
 
 					<ProfileButtonArea userName="John Doe" imageUrl="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
 				</Header>
 
 				<Layout>
-					<Sider style={{ borderLeft: "1px solid #cfcfcf" }} width={navbarWidth} theme="light" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+					<Sider  width={navbarWidth} theme="light" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 						<Menu
 							mode="vertical"
-							theme="light"
+							theme={darkMode ? "dark" : "light"}  
 							defaultSelectedKeys={["1"]}
 							style={{
 								display: "flex",
@@ -88,8 +87,7 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 							style={{
 								display: "flex",
 								flexDirection: "column",
-								padding: "0 !important",
-								borderRight: "1px solid #cfcfcf",
+								padding: "30px",
 							}}
 						>
 							<div>
