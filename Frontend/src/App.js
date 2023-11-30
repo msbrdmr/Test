@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import * as pages from "./pages/Pages";
 import RegisterPage from "./pages/Register";
-import "../src/assets/styles/index.css"
+import "../src/assets/styles/index.css";
 function App() {
+	const [darkMode, setDarkMode] = useState(false);
+
+	const handleDarkModeChange = (checked) => {
+		console.log(checked);
+		setDarkMode(checked);
+	};
 	return (
 		<Router>
-			
 			<Routes>
-				<Route path="/" element={<Dashboard />}>
+				<Route path="/" element={<Dashboard darkMode={darkMode} handleDarkModeChange={handleDarkModeChange} />}>
 					<Route index element={<pages.Profile />} />
 					<Route path="/profile" element={<pages.Profile />} />
 					<Route path="/forms" element={<pages.Forms />} />

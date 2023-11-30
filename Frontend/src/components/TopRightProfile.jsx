@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Avatar, notification, Popover, App } from "antd";
+import { Button, Avatar, notification, Popover, Switch, App } from "antd";
 import {
     SettingTwoTone,
     UserOutlined,
@@ -18,7 +18,6 @@ const contentMap = {
 };
 
 export const ProfileButtonArea = ({ imageUrl, userName }) => {
-    const { modal } = App.useApp();
     const [isHovered, setHovered] = useState(false);
 
     const handleHover = () => {
@@ -37,6 +36,8 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
             placement: "bottomLeft",
         });
     };
+
+    
 
     const renderPopoverContent = (type) => (
         <div>
@@ -78,6 +79,9 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
                     style={{ borderRadius: "25px" }}
                 />
             </Popover>
+
+            {/* Dark Mode Switch */}
+            
 
             <Button
                 type="default"

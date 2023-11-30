@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Menu, Divider } from "antd";
+import { Layout, Menu, Divider, Switch } from "antd";
 
 import { ProfileButtonArea } from "./components/TopRightProfile";
 import { UserOutlined, FormOutlined, LoginOutlined, LogoutOutlined, SettingOutlined, MenuFoldOutlined, HomeOutlined } from "@ant-design/icons";
@@ -20,7 +20,7 @@ const menuItemUnFoldStyle = {
 const { Sider, Content, Header } = Layout;
 const UnfoldNavbarWidth = 150;
 const FoldNavbarWidth = 40;
-const Dashboard = () => {
+const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 	const [fold, setFold] = useState(true);
 	const [navbarWidth, setNavbarWidth] = useState(FoldNavbarWidth);
 
@@ -40,9 +40,12 @@ const Dashboard = () => {
 					<div style={{ marginRight: "auto" }}>
 						<img src="https://i.imgur.com/MgnwjM9.png" alt="Logo" style={{ marginTop: "25px", height: "68px", width: "auto" }} />
 					</div>
+
 					<CustomDivider height={50} topMargin={20} bottomMargin={20} />
 
-					<Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]} />
+					<Switch checked={darkMode} onChange={handleDarkModeChange} style={{ marginLeft: "10px", marginRight: "10px" }} />
+
+					<Menu theme="light" mode="horizontal" defaultSelectedKeys={["2"]} />
 
 					<ProfileButtonArea userName="John Doe" imageUrl="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
 				</Header>
