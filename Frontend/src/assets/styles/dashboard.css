@@ -2,6 +2,21 @@
 	background-color: rgb(255, 255, 255);
 	display: flex;
 	height: 60px;
+	width: 100%;
 	align-items: center;
 	padding: 0px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 1000;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
 }
+
+.ant-layout .ant-layout-sider {
+	position: fixed;
+	top: 60px;
+	z-index: 1001;
+	border-right: 1px solid #ccc;
+	min-height: 100vh;
+}
+

@@ -30,42 +30,26 @@ const UnfoldNavbarWidth = 150;
 const FoldNavbarWidth = 40;
 
 const Dashboard = ({ darkMode, handleDarkModeChange }) => {
-  const [fold, setFold] = useState(true);
-  const [navbarWidth, setNavbarWidth] = useState(FoldNavbarWidth);
-  const menuStyle = {
-    background: darkMode
-      ? "linear-gradient(to right bottom, #3c4149, #464b52, #51555c, #5b5f66, #666970)"
-      : "white",
-    color: darkMode ? "white" : "black",
-  };
+	const [fold, setFold] = useState(true);
+	const [navbarWidth, setNavbarWidth] = useState(FoldNavbarWidth);
 
-  const handleMouseEnter = () => {
-    setFold(false);
-    setNavbarWidth(UnfoldNavbarWidth);
-  };
+	const handleMouseEnter = () => {
+		setFold(false);
+		setNavbarWidth(UnfoldNavbarWidth);
+	};
 
-  const handleMouseLeave = () => {
-    setFold(true);
-    setNavbarWidth(FoldNavbarWidth);
-  };
-  return (
-    <div>
-      <Layout style={{ minHeight: "80vh" }}>
-        <Header
-          style={{
-            background: darkMode
-              ? "linear-gradient(to right top, #3c4149, #464b52, #51555c, #5b5f66, #666970)"
-              : "#FFF",
-            color: darkMode ? "#FFF" : "#001529",
-          }}
-        >
-          <div style={{ marginRight: "auto" }}>
-            <img
-              src="https://i.imgur.com/MgnwjM9.png"
-              alt="Logo"
-              style={{ marginTop: "25px", height: "68px", width: "auto" }}
-            />
-          </div>
+	const handleMouseLeave = () => {
+		setFold(true);
+		setNavbarWidth(FoldNavbarWidth);
+	};
+
+	return (
+		<div>
+			<Layout style={{ minHeight: "100vh", overflow: "hidden" }}>
+				<Header style={{ background: darkMode ? "#001529" : "#fff", color: darkMode ? "#fff" : "rgba(0, 0, 0, 0.65)" }}>
+					<div style={{ marginRight: "auto" }}>
+						<img src="https://i.imgur.com/MgnwjM9.png" alt="Logo" style={{ marginTop: "25px", height: "68px", width: "auto" }} />
+					</div>
 
           <CustomDivider height={50} topMargin={20} bottomMargin={20} />
 
@@ -75,37 +59,24 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
             style={{ marginLeft: "10px", marginRight: "10px" }}
           />
 
-          <ProfileButtonArea
-            userName="John Doe"
-            imageUrl="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          />
-        </Header>
+					<ProfileButtonArea userName="musab erdemir" imageUrl="https://lh3.googleusercontent.com/ogw/AKPQZvyuU4OlHH8kMaRx86EmmADarFQenIavEjCXjROLHwI=s32-c-mo" srcset="https://lh3.googleusercontent.com/ogw/AKPQZvyuU4OlHH8kMaRx86EmmADarFQenIavEjCXjROLHwI=s32-c-mo 1x, https://lh3.googleusercontent.com/ogw/AKPQZvyuU4OlHH8kMaRx86EmmADarFQenIavEjCXjROLHwI=s64-c-mo 2x " />
+				</Header>
 
-        <Layout>
-          <Sider
-            width={navbarWidth}
-            theme="light"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <Menu
-              mode="vertical"
-              theme={darkMode ? "dark" : "light"}
-              defaultSelectedKeys={["1"]}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                height: "100%",
-                ...menuStyle,
-              }}
-            >
-              <Menu.Item
-                style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
-                key="1"
-                icon={<UserOutlined />}
-              >
-                <Link to="/profile">Profile</Link>
-              </Menu.Item>
+				<Layout>
+					<Sider width={navbarWidth} theme="light" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+						<Menu
+							mode="vertical"
+							theme={darkMode ? "dark" : "light"}
+							defaultSelectedKeys={["1"]}
+							style={{
+								display: "flex",
+								flexDirection: "column",
+								height: "100%",
+							}}
+						>
+							<Menu.Item style={fold ? menuItemFoldStyle : menuItemUnFoldStyle} key="1" icon={<UserOutlined />}>
+								<Link to="/profile">Profile</Link>
+							</Menu.Item>
 
               <Menu.Item
                 style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
@@ -162,4 +133,5 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
     </div>
   );
 };
+
 export default Dashboard;

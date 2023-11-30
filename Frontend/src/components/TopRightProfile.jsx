@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Button, Avatar, notification, Popover, Switch, App } from "antd";
+import { useNavigate } from "react-router-dom";
+import { Button, notification, Popover } from "antd";
 import {
     SettingTwoTone,
-    UserOutlined,
     MessageTwoTone,
     MailTwoTone,
     SnippetsTwoTone,
-    EditOutlined,
 } from "@ant-design/icons";
 import "../assets/styles/profile.css";
 
@@ -18,6 +17,7 @@ const contentMap = {
 };
 
 export const ProfileButtonArea = ({ imageUrl, userName }) => {
+    const navigate = useNavigate();
     const [isHovered, setHovered] = useState(false);
 
     const handleHover = () => {
@@ -27,7 +27,10 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
     const handleUnhover = () => {
         setHovered(false);
     };
-
+    const handleProfileButtonClick = (
+    ) => {
+        navigate("/profile")
+    }
     const handleEditClick = () => {
         // Display Ant Design notification
         notification.info({
@@ -37,7 +40,7 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
         });
     };
 
-    
+
 
     const renderPopoverContent = (type) => (
         <div>
@@ -81,9 +84,10 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
             </Popover>
 
             {/* Dark Mode Switch */}
-            
+
 
             <Button
+                onClick={handleProfileButtonClick}
                 type="default"
                 style={{ borderRadius: "25px 0px 0px 25px" }}
             >
