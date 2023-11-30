@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Divider } from "antd";
 
 import { ProfileButtonArea } from "./components/TopRightProfile";
 import { UserOutlined, FormOutlined, LoginOutlined, LogoutOutlined, SettingOutlined, MenuFoldOutlined, HomeOutlined } from "@ant-design/icons";
 import { Link, Outlet } from "react-router-dom";
 import "../src/assets/styles/dashboard.css";
+import CustomDivider from "./components/CustomDivider";
 
 const menuItemFoldStyle = {
 	display: "flex",
@@ -39,13 +40,15 @@ const Dashboard = () => {
 					<div style={{ marginRight: "auto" }}>
 						<img src="https://i.imgur.com/MgnwjM9.png" alt="Logo" style={{ marginTop: "25px", height: "68px", width: "auto" }} />
 					</div>
+					<CustomDivider height={50} topMargin={20} bottomMargin={20} />
+
 					<Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]} />
 
 					<ProfileButtonArea userName="John Doe" imageUrl="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
 				</Header>
 
 				<Layout>
-					<Sider style={{ borderRight: "1px solid #cfcfcf", borderLeft: "1px solid #cfcfcf", borderBottom: "1px solid #cfcfcf" }} width={navbarWidth} theme="light " onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+					<Sider style={{ borderLeft: "1px solid #cfcfcf" }} width={navbarWidth} theme="light" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 						<Menu
 							mode="vertical"
 							theme="light"
@@ -59,6 +62,7 @@ const Dashboard = () => {
 							<Menu.Item style={fold ? menuItemFoldStyle : menuItemUnFoldStyle} key="1" icon={<UserOutlined />}>
 								<Link to="/profile">Profile</Link>
 							</Menu.Item>
+
 							<Menu.Item style={fold ? menuItemFoldStyle : menuItemUnFoldStyle} key="2" icon={<HomeOutlined />}>
 								<Link to="/home">Home</Link>
 							</Menu.Item>
@@ -81,7 +85,7 @@ const Dashboard = () => {
 							style={{
 								display: "flex",
 								flexDirection: "column",
-								padding: "16px",
+								padding: "0 !important",
 								borderRight: "1px solid #cfcfcf",
 							}}
 						>

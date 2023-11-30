@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import * as pages from "./pages/Pages";
 import RegisterPage from "./pages/Register";
+import "../src/assets/styles/index.css"
 function App() {
 	return (
 		<Router>
