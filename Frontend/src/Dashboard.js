@@ -2,21 +2,29 @@ import React, { useState } from "react";
 import { Layout, Menu, Divider, Switch } from "antd";
 
 import { ProfileButtonArea } from "./components/TopRightProfile";
-import { UserOutlined, FormOutlined, LoginOutlined, LogoutOutlined, SettingOutlined, MenuFoldOutlined, HomeOutlined } from "@ant-design/icons";
+import {
+  UserOutlined,
+  FormOutlined,
+  LoginOutlined,
+  LogoutOutlined,
+  SettingOutlined,
+  MenuFoldOutlined,
+  HomeOutlined,
+} from "@ant-design/icons";
 import { Link, Outlet } from "react-router-dom";
 import "../src/assets/styles/dashboard.css";
 import CustomDivider from "./components/CustomDivider";
 import SearchBar from "./components/SearchBar";
 
 const menuItemFoldStyle = {
-	display: "flex",
-	alignItems: "center",
-	padding: "0px 0px 0px 10px ",
-	justifyContent: "center",
-	fontSize: 0,
+  display: "flex",
+  alignItems: "center",
+  padding: "0px 0px 0px 10px ",
+  justifyContent: "center",
+  fontSize: 0,
 };
 const menuItemUnFoldStyle = {
-	padding: "0px 0px 0px 10px ",
+  padding: "0px 0px 0px 10px ",
 };
 const { Sider, Content, Header } = Layout;
 const UnfoldNavbarWidth = 150;
@@ -44,9 +52,13 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 						<img src="https://i.imgur.com/MgnwjM9.png" alt="Logo" style={{ marginTop: "25px", height: "68px", width: "auto" }} />
 					</div>
 					<SearchBar></SearchBar>
-					<CustomDivider height={50} topMargin={20} bottomMargin={20} />
+          <CustomDivider height={50} topMargin={20} bottomMargin={20} />
 
-					<Switch checked={darkMode} onChange={handleDarkModeChange} style={{ marginLeft: "10px", marginRight: "10px" }} />
+          <Switch
+            checked={darkMode}
+            onChange={handleDarkModeChange}
+            style={{ marginLeft: "10px", marginRight: "10px" }}
+          />
 
 					<ProfileButtonArea userName="musab erdemir" imageUrl="https://lh3.googleusercontent.com/ogw/AKPQZvyuU4OlHH8kMaRx86EmmADarFQenIavEjCXjROLHwI=s32-c-mo" srcset="https://lh3.googleusercontent.com/ogw/AKPQZvyuU4OlHH8kMaRx86EmmADarFQenIavEjCXjROLHwI=s32-c-mo 1x, https://lh3.googleusercontent.com/ogw/AKPQZvyuU4OlHH8kMaRx86EmmADarFQenIavEjCXjROLHwI=s64-c-mo 2x " />
 				</Header>
@@ -68,41 +80,60 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 								<Link to="/profile">Profile</Link>
 							</Menu.Item>
 
-							<Menu.Item style={fold ? menuItemFoldStyle : menuItemUnFoldStyle} key="2" icon={<HomeOutlined />}>
-								<Link to="/home">Home</Link>
-							</Menu.Item>
-							<Menu.Item style={fold ? menuItemFoldStyle : menuItemUnFoldStyle} key="3" icon={<FormOutlined />}>
-								<Link to="/forms">Forms</Link>
-							</Menu.Item>
-							<Menu.Item style={fold ? menuItemFoldStyle : menuItemUnFoldStyle} key="4" icon={<LoginOutlined />}>
-								<Link to="/login">Sign In</Link>
-							</Menu.Item>
-							<Menu.Item style={fold ? menuItemFoldStyle : menuItemUnFoldStyle} key="5" icon={<LogoutOutlined />}>
-								<Link to="/signup">Sign Up</Link>
-							</Menu.Item>
-							<Menu.Item style={fold ? menuItemFoldStyle : menuItemUnFoldStyle} key="6" icon={<SettingOutlined />}>
-								<Link to="/settings">Settings</Link>
-							</Menu.Item>
-						</Menu>
-					</Sider>
-					<Layout>
-						<Content
-							style={{
-								display: "flex",
-								flexDirection: "column",
-								padding: "30px",
-								
-							}}
-						>
-							<div>
-								<Outlet />
-							</div>
-						</Content>
-					</Layout>
-				</Layout>
-			</Layout>
-		</div>
-	);
+              <Menu.Item
+                style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
+                key="2"
+                icon={<HomeOutlined />}
+              >
+                <Link to="/home">Home</Link>
+              </Menu.Item>
+              <Menu.Item
+                style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
+                key="3"
+                icon={<FormOutlined />}
+              >
+                <Link to="/forms">Forms</Link>
+              </Menu.Item>
+              <Menu.Item
+                style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
+                key="4"
+                icon={<LoginOutlined />}
+              >
+                <Link to="/login">Login</Link>
+              </Menu.Item>
+              <Menu.Item
+                style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
+                key="5"
+                icon={<LogoutOutlined />}
+              >
+                <Link to="/signup">Sign Up</Link>
+              </Menu.Item>
+              <Menu.Item
+                style={fold ? menuItemFoldStyle : menuItemUnFoldStyle}
+                key="6"
+                icon={<SettingOutlined />}
+              >
+                <Link to="/settings">Settings</Link>
+              </Menu.Item>
+            </Menu>
+          </Sider>
+          <Layout>
+            <Content
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                padding: "30px",
+              }}
+            >
+              <div>
+                <Outlet />
+              </div>
+            </Content>
+          </Layout>
+        </Layout>
+      </Layout>
+    </div>
+  );
 };
 
 export default Dashboard;

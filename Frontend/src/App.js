@@ -7,7 +7,7 @@ import { Home } from "./pages/Home";
 import RegisterPage from "./pages/Register";
 import "../src/assets/styles/index.css";
 function App() {
-	const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
 	const handleDarkModeChange = (checked) => {
 		console.log(checked);

@@ -17,19 +17,20 @@ function Login() {
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
 
-  const sendInfo = (e) => {
-    console.log("logInfo", logInfo);
+  const sendInfo = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:8081", logInfo) // server
-      .then((res) => {
-        if (res.data.Message === "Success") {
-          navigate("/home");
-        } else {
-          alert(res.data.Message);
-        }
-      })
-      .catch((err) => console.log(err));
+
+    try {
+      const response = await axios.post("http://localhost:8081/login", logInfo);
+      if (response.data.Message === "Success") {
+        navigate("/home");
+      } else {
+        alert(response.data.Message);
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error appropriately, e.g., show an error message to the user
+    }
   };
 
   return (
