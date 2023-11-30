@@ -1,11 +1,13 @@
+// src/pages/Register.js
 import React, { useState } from "react";
 import { Button, Grid, Paper } from "@mui/material";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
-
+import { useNavigate } from "react-router-dom";
 
 function RegisterPage() {
   const [formType, setFormType] = useState("login");
+  const navigate = useNavigate();
 
   const formStyle = {
     background: "linear-gradient(135deg, #676A71, #3B4048)",
@@ -30,8 +32,8 @@ function RegisterPage() {
     transition: "background 0.3s, color 0.3s",
   };
 
-  const switchForm = (e) => {
-    const buttonText = e.target.innerText.toLowerCase();
+  const switchForm = (buttonText) => {
+    navigate("/" + buttonText);
     setFormType(buttonText);
   };
 
@@ -61,11 +63,15 @@ function RegisterPage() {
             padding: "20px",
           }}
         >
-          {formType === "log in" ? <Login /> : <SignUp />}
+          {formType === "login" ? (
+            <Login />
+          ) : (
+            <SignUp switchForm={switchForm} />
+          )}
         </Grid>
         <div style={buttonContainerStyle}>
           <Button
-            onClick={(e) => switchForm(e)}
+            onClick={() => switchForm("login")}
             onMouseOver={handleHover}
             onMouseOut={handleMouseOut}
             style={upStyle}
@@ -73,12 +79,12 @@ function RegisterPage() {
             Log In
           </Button>
           <Button
-            onClick={(e) => switchForm(e)}
+            onClick={() => switchForm("signup")}
             onMouseOver={handleHover}
             onMouseOut={handleMouseOut}
             style={upStyle}
           >
-            Sign In
+            Sign Up
           </Button>
         </div>
       </Paper>
