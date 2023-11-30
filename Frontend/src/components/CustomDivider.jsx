@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const CustomDivider = ({ height, topMargin, bottomMargin }) => {
+const CustomDivider = ({ height, marginRight, marginLeft }) => {
     const dividerStyle = {
         borderLeft: "1px solid #cfcfcf", // Adjust border color as needed
         height: `${height}px`, // Specify the desired length of the line
-        margin: `${topMargin}px 0 ${bottomMargin}px 0`,
+        margin: `0 ${marginRight}px 0 ${marginLeft}px  `,
     };
 
     return <div style={dividerStyle}></div>;
@@ -13,14 +13,14 @@ const CustomDivider = ({ height, topMargin, bottomMargin }) => {
 
 CustomDivider.propTypes = {
     height: PropTypes.number,
-    topMargin: PropTypes.number,
-    bottomMargin: PropTypes.number,
+    marginRight: PropTypes.number,
+    marginLeft: PropTypes.number
 };
 
 CustomDivider.defaultProps = {
     height: 20, // Default height if not provided
-    topMargin: 0,
-    bottomMargin: 0,
+    marginRight: 0,
+    marginLeft: 0,
 };
 
 export default CustomDivider;

@@ -15,8 +15,39 @@
 .ant-layout .ant-layout-sider {
 	position: fixed;
 	top: 60px;
-	z-index: 1001;
-	border-right: 1px solid #ccc;
+	z-index: 999;
 	min-height: 100vh;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+/* SearchBar.css */
+
+/* SearchBar.css */
+
+.search-wrapper {
+	display: flex;
+	margin-right: 20px;
+	align-items: center;
 }
 
+.search-bar {
+	display: flex;
+	height: 40px;
+	align-items: center;
+	border: 1px solid #d9d9d9;
+	border-radius: 4px;
+	padding: 8px;
+}
+
+.search-icon {
+	margin-right: 10px;
+	fill: #1890ff; /* Ant Design primary color */
+}
+
+.search-input {
+	border: none;
+	outline: none;
+	flex: 1;
+}
+.searchDivider {
+	margin: 5px;
+}

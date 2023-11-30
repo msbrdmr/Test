@@ -6,6 +6,7 @@ import { UserOutlined, FormOutlined, LoginOutlined, LogoutOutlined, SettingOutli
 import { Link, Outlet } from "react-router-dom";
 import "../src/assets/styles/dashboard.css";
 import CustomDivider from "./components/CustomDivider";
+import SearchBar from "./components/SearchBar";
 
 const menuItemFoldStyle = {
 	display: "flex",
@@ -42,7 +43,7 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 					<div style={{ marginRight: "auto" }}>
 						<img src="https://i.imgur.com/MgnwjM9.png" alt="Logo" style={{ marginTop: "25px", height: "68px", width: "auto" }} />
 					</div>
-
+					<SearchBar></SearchBar>
 					<CustomDivider height={50} topMargin={20} bottomMargin={20} />
 
 					<Switch checked={darkMode} onChange={handleDarkModeChange} style={{ marginLeft: "10px", marginRight: "10px" }} />
@@ -61,7 +62,8 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 								flexDirection: "column",
 								height: "100%",
 							}}
-						>
+						>	
+
 							<Menu.Item style={fold ? menuItemFoldStyle : menuItemUnFoldStyle} key="1" icon={<UserOutlined />}>
 								<Link to="/profile">Profile</Link>
 							</Menu.Item>
@@ -89,6 +91,7 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 								display: "flex",
 								flexDirection: "column",
 								padding: "30px",
+								
 							}}
 						>
 							<div>
