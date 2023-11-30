@@ -1,0 +1,14 @@
+
+.profile {
+	display: flex;
+	align-items: center;
+	height: 50px;
+	width: fit-content;
+	margin-right: 0px;
+	gap: 5px;
+}
+.profile-image {
+    transition: 0.05s;
+	top: 0px;
+	right: 15px;
+}
