@@ -83,8 +83,6 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
                 />
             </Popover>
 
-            {/* Dark Mode Switch */}
-
 
             <Button
                 onClick={handleProfileButtonClick}
@@ -104,9 +102,9 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
                     width: "50px",
                     border: isHovered
                         ? "3px solid rgba(0, 0, 0, 0.3)"
-                        : "1px solid white", // Add outline with less alpha on hover
+                        : "1px solid white",
                     position: "relative",
-                    cursor: "pointer", // Change cursor to hand
+                    cursor: "pointer",
                 }}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleUnhover}
