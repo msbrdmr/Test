@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
 
 export const Profile = () => {
     const [profileImage, setProfileImage] = useState(
-        "https://lh3.googleusercontent.com/ogw/AKPQZvyuU4OlHH8kMaRx86EmmADarFQenIavEjCXjROLHwI=s32-c-mo" 
+        "https://lh3.googleusercontent.com/ogw/AKPQZvyuU4OlHH8kMaRx86EmmADarFQenIavEjCXjROLHwI=s32-c-mo"
     );
     const onFinish = (values) => {
         // Handle form submission (e.g., update password)
@@ -35,7 +35,7 @@ export const Profile = () => {
         }
     };
     return (
-        <Content style={{ padding: "30px" }}>
+        <div style={{ padding: "30px" }}>
             <Title level={2}>User Profile</Title>
             <Divider />
 
@@ -160,7 +160,7 @@ export const Profile = () => {
                     </Button>
                 </Form.Item>
             </Form>
-        </Content>
+        </div>
     );
 };
 

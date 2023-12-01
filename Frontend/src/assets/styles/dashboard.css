@@ -19,9 +19,15 @@
 	min-height: 100vh;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-/* SearchBar.css */
+.ant-layout .ant-layout-content {
+	transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-top: 60px;
+	border: 2px solid #eee;
+}
 
-/* SearchBar.css */
 
 .search-wrapper {
 	display: flex;

@@ -36,7 +36,10 @@ function App() {
           <Route path="/settings" element={<pages.Settings />} />
 
           <Route path="/*" element={<pages.Empty />} />
+
         </Route>
+        <Route path="/register" element={<RegisterPage  />} />
+
       </Routes>
     </Router>
   );

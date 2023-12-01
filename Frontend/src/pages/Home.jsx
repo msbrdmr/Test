@@ -2,7 +2,6 @@ import React from "react";
 import { Layout, Typography, Divider, Table, Card, Row, Col, Statistic, Tag, Timeline, List, Progress } from "antd";
 import { CheckCircleOutlined, CloseCircleOutlined, CalendarOutlined, ClockCircleOutlined, AuditOutlined } from "@ant-design/icons";
 
-const { Content } = Layout;
 const { Title, Text } = Typography;
 
 // Example data for team members
@@ -56,7 +55,7 @@ export const Home = () => {
     ];
 
     return (
-        <Content style={{ padding: "30px" }}>
+        <div style={{ padding: "30px" }}>
             <Title level={2}>Home</Title>
             <Divider />
             <Row style={{ marginBottom: "16px" }} gutter={16}>
@@ -137,7 +136,7 @@ export const Home = () => {
                     </Card>
                 </Col>
             </Row>
-        </Content>
+        </div>
     );
 };
 
