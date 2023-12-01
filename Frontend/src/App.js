@@ -6,6 +6,7 @@ import { Profile } from "./pages/Profile";
 import { RegisterPage } from "./pages/Register";
 import { Home } from "./pages/Home";
 import "../src/assets/styles/index.css";
+import Chat from "./components/Chat";
 function App() {
 	const [darkMode, setDarkMode] = useState(false);
 
@@ -26,6 +27,7 @@ function App() {
 					<Route path="/login-temp" element={<RegisterPage></RegisterPage>}></Route>
 					<Route path="/signup" element={<pages.SignUp />} />
 					<Route path="/settings" element={<pages.Settings />} />
+					<Route path="/login" element={<Chat />} />
 					<Route path="/*" element={<pages.Empty />} />
 				</Route>
 			</Routes>
