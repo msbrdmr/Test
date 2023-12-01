@@ -71,7 +71,7 @@ app.post("/signup", async (req, res) => {
         console.log(err);
         return res.json({ Message: "Server Side error" });
       }
-
+      console.log("inserted data", data);
       return res.json({ Message: "Success" });
     });
   } catch (error) {

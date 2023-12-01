@@ -1,94 +1,142 @@
-// src/pages/Register.js
 import React, { useState } from "react";
-import { Button, Grid, Paper } from "@mui/material";
-import Login from "../components/Login";
-import SignUp from "../components/SignUp";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+import * as Components from "../assets/loginMenu/MenuComponents";
+
+//import "../assets/loginMenu/menuStyle.css"; //ortalıo ve kaydırıo ama bu arayuzde karısıklıga sebep oluyor basa aldıgımız zaman commment kalkıcak
 
 function RegisterPage() {
-  const [formType, setFormType] = useState("login");
+  const [logIn, toggle] = React.useState(true);
   const navigate = useNavigate();
 
-  const formStyle = {
-    background: "linear-gradient(135deg, #676A71, #3B4048)",
-    padding: 20,
-    width: 300,
-    margin: "50px auto",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  const [logInfo, setLogInfo] = useState({
+    UserMail: "",
+    UserPassword: "",
+  });
+
+  axios.defaults.withCredentials = true;
+
+  const sendLogInfo = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:8081/login", logInfo);
+      if (response.data.Message === "Success") {
+        navigate("/home");
+      } else {
+        alert(response.data.Message);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const buttonContainerStyle = {
-    marginBottom: 20,
-    display: "flex",
-    justifyContent: "space-around",
-  };
+  const [signInfo, setSignInfo] = useState({
+    UserMail: "",
+    UserPassword: "",
+  });
 
-  const upStyle = {
-    padding: "15px 30px",
-    background: "none",
-    color: "#decc80",
-    cursor: "pointer",
-    fontSize: 16,
-    transition: "background 0.3s, color 0.3s",
-  };
+  axios.defaults.withCredentials = true;
 
-  const switchForm = (buttonText) => {
-    navigate("/" + buttonText);
-    setFormType(buttonText);
+  const sendSignInfo = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8081/signup", signInfo)
+      .then((res) => {
+        if (res.data.Message === "Success") {
+          console.log("person added successfully");
+          toggle(true);
+        } else {
+          alert(res.data.Message);
+        }
+      })
+      .catch((err) => console.log(err));
   };
-
-  const handleHover = (e) => {
-    e.target.style.background = "#C0C0C0";
-    e.target.style.color = "white";
-  };
-
-  const handleMouseOut = (e) => {
-    e.target.style.background = "none";
-    e.target.style.color = "#decc80";
-  };
-
   return (
-    <Grid container justifyContent="center">
-      <Paper elevation={5} style={formStyle}>
-        <Grid container item xs={12} justifyContent="center">
-          <img
-            src="https://i.imgur.com/MgnwjM9.png"
-            alt="logo"
-            style={{ width: "100%", height: "auto", maxWidth: "150px" }}
+    <Components.Container>
+      <Components.SignUpContainer logInIn={logIn}>
+        <Components.Form>
+          <Components.Title style={{ margin: "0px 0 20px" }}>
+            Create Account
+          </Components.Title>
+          <Components.StyledTextField
+            onChange={(e) =>
+              setSignInfo({ ...signInfo, UserMail: e.target.value })
+            }
+            type="email"
+            label="Email"
+            variant="outlined"
+            fullWidth
           />
-        </Grid>
-
-        <Grid
-          style={{
-            padding: "20px",
-          }}
-        >
-          {formType === "login" ? (
-            <Login />
-          ) : (
-            <SignUp switchForm={switchForm} />
-          )}
-        </Grid>
-        <div style={buttonContainerStyle}>
-          <Button
-            onClick={() => switchForm("login")}
-            onMouseOver={handleHover}
-            onMouseOut={handleMouseOut}
-            style={upStyle}
-          >
-            Log In
-          </Button>
-          <Button
-            onClick={() => switchForm("signup")}
-            onMouseOver={handleHover}
-            onMouseOut={handleMouseOut}
-            style={upStyle}
+          <Components.StyledTextField
+            onChange={(e) =>
+              setSignInfo({ ...signInfo, UserPassword: e.target.value })
+            }
+            type="password"
+            label="Password"
+            variant="outlined"
+            fullWidth
+          />
+          <Components.Button
+            onClick={sendSignInfo}
+            style={{ margin: "10px 0 0px" }}
           >
             Sign Up
-          </Button>
-        </div>
-      </Paper>
-    </Grid>
+          </Components.Button>
+        </Components.Form>
+      </Components.SignUpContainer>
+
+      <Components.LogInContainer logInIn={logIn}>
+        <Components.Form>
+          <Components.Title>Login</Components.Title>
+          <Components.StyledTextField
+            onChange={(e) =>
+              setLogInfo({ ...logInfo, UserMail: e.target.value })
+            }
+            type="email"
+            label="Email"
+            variant="outlined"
+            fullWidth
+          />
+          <Components.StyledTextField
+            onChange={(e) =>
+              setLogInfo({ ...logInfo, UserPassword: e.target.value })
+            }
+            type="password"
+            label="Password"
+            variant="outlined"
+            fullWidth
+          />
+          <Components.Anchor href="#">Forgot your password?</Components.Anchor>
+          <Components.Button onClick={sendLogInfo}>Login</Components.Button>
+        </Components.Form>
+      </Components.LogInContainer>
+
+      <Components.OverlayContainer logInIn={logIn}>
+        <Components.Overlay logInIn={logIn}>
+          <Components.LeftOverlayPanel logInIn={logIn}>
+            <Components.Title>Welcome Back!</Components.Title>
+            <Components.Paragraph>
+              Lorem ipsum dolor sit amet, consectetur
+            </Components.Paragraph>
+            <Components.GhostButton onClick={() => toggle(true)}>
+              Log In
+            </Components.GhostButton>
+          </Components.LeftOverlayPanel>
+
+          <Components.RightOverlayPanel logInIn={logIn}>
+            <Components.Title>Hello!</Components.Title>
+            <Components.Paragraph>
+              Lorem ipsum dolor sit amet, consectetur
+            </Components.Paragraph>
+            <Components.GhostButton onClick={() => toggle(false)}>
+              Sign Up
+            </Components.GhostButton>
+          </Components.RightOverlayPanel>
+        </Components.Overlay>
+      </Components.OverlayContainer>
+    </Components.Container>
   );
 }
 
