@@ -1,4 +1,3 @@
-// Backend server.js
 import express from "express";
 import mysql from "mysql2";
 import cors from "cors";
