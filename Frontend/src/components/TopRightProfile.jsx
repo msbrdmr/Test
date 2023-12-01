@@ -2,51 +2,48 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, notification, Popover } from "antd";
 import {
-    SettingTwoTone,
-    MessageTwoTone,
-    MailTwoTone,
-    SnippetsTwoTone,
+  SettingTwoTone,
+  MessageTwoTone,
+  MailTwoTone,
+  SnippetsTwoTone,
 } from "@ant-design/icons";
 import "../assets/styles/profile.css";
 
 const contentMap = {
-    message: "Message Inbox",
-    snippets: "Snippets Inbox",
-    mail: "Mail Inbox",
-    setting: "Settings",
+  message: "Message Inbox",
+  snippets: "Snippets Inbox",
+  mail: "Mail Inbox",
+  setting: "Settings",
 };
 
 export const ProfileButtonArea = ({ imageUrl, userName }) => {
-    const navigate = useNavigate();
-    const [isHovered, setHovered] = useState(false);
+  const navigate = useNavigate();
+  const [isHovered, setHovered] = useState(false);
 
-    const handleHover = () => {
-        setHovered(true);
-    };
+  const handleHover = () => {
+    setHovered(true);
+  };
 
-    const handleUnhover = () => {
-        setHovered(false);
-    };
-    const handleProfileButtonClick = (
-    ) => {
-        navigate("/profile")
-    }
-    const handleEditClick = () => {
-        // Display Ant Design notification
-        notification.info({
-            message: "Good",
-            description: "Hey",
-            placement: "bottomLeft",
-        });
-    };
+  const handleUnhover = () => {
+    setHovered(false);
+  };
+  const handleProfileButtonClick = () => {
+    navigate("/profile");
+  };
+  const handleEditClick = () => {
+    // Display Ant Design notification
+    notification.info({
+      message: "Good",
+      description: "Hey",
+      placement: "bottomLeft",
+    });
+  };
 
-
-
-    const renderPopoverContent = (type) => (
-        <div>
-            <p>{contentMap[type]}</p>
-        </div>
-    );
+  const renderPopoverContent = (type) => (
+    <div>
+      <p>{contentMap[type]}</p>
+    </div>
+  );
 
     return (
         <div className="profile">
@@ -56,6 +53,7 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
                     type="default"
                     icon={<MessageTwoTone />}
                     style={{ borderRadius: "25px" }}
+                    onClick={()=>navigate("/chat")}
                 />
             </Popover>
             <Popover content={renderPopoverContent("snippets")} trigger="hover">
@@ -83,6 +81,8 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
                 />
             </Popover>
 
+            {/* Dark Mode Switch */}
+
 
             <Button
                 onClick={handleProfileButtonClick}
@@ -102,9 +102,9 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
                     width: "50px",
                     border: isHovered
                         ? "3px solid rgba(0, 0, 0, 0.3)"
-                        : "1px solid white",
+                        : "1px solid white", // Add outline with less alpha on hover
                     position: "relative",
-                    cursor: "pointer",
+                    cursor: "pointer", // Change cursor to hand
                 }}
                 onMouseEnter={handleHover}
                 onMouseLeave={handleUnhover}

@@ -27,25 +27,49 @@ const db = mysql.createConnection({
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
+// Middleware to verify the JWT token
+const verifyToken = (req, res, next) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(403).json({ Message: "Unauthorized" });
+  }
+
+  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(403).json({ Message: "Unauthorized" });
+    }
+
+    req.user = decoded;
+    next();
+  });
+};
+
+// Login endpoint
 app.post("/login", async (req, res) => {
-  const sqlQuery = "SELECT * FROM sys.users WHERE UserMail = ?";
-  db.query(sqlQuery, [req.body.UserMail], async (err, data) => {
+  const sqlQuery = "SELECT * FROM sys.users WHERE userMail = ?";
+  db.query(sqlQuery, [req.body.userMail], async (err, data) => {
     if (err) {
       console.log(err);
       return res.json({ Message: "Server Side error" });
     }
 
     if (data.length > 0) {
-      const hashedPassword = data[0].UserPassword;
+      const hashedPassword = data[0].userPassword;
       const passwordMatch = await bcrypt.compare(
-        req.body.UserPassword,
+        req.body.userPassword,
         hashedPassword
       );
 
       if (passwordMatch) {
-        const token = jwt.sign({ email: req.body.email }, JWT_SECRET, {
-          expiresIn: "1d",
-        });
+        const { userName, userSurname, userMail } = data[0];
+        const token = jwt.sign(
+          { userName, userSurname, userMail },
+          JWT_SECRET,
+          {
+            expiresIn: "1d",
+          }
+        );
         res.cookie("token", token);
         console.log("Data response:", data);
         return res.json({ Message: "Success", token: token });
@@ -60,23 +84,34 @@ app.post("/login", async (req, res) => {
   });
 });
 
+// Signup endpoint
 app.post("/signup", async (req, res) => {
   try {
-    const hash = await bcrypt.hash(req.body.UserPassword, 10);
+    const hash = await bcrypt.hash(req.body.userPassword, 10);
     const sqlQuery =
-      "INSERT INTO sys.users (UserMail, UserPassword) VALUES (?, ?)";
-    db.query(sqlQuery, [req.body.UserMail, hash], (err, data) => {
-      if (err) {
-        console.log(err);
-        return res.json({ Message: "Server Side error" });
+      "INSERT INTO sys.users (userName, userSurname, userMail, userPassword) VALUES (?, ?, ?, ?)";
+    db.query(
+      sqlQuery,
+      [req.body.userName, req.body.userSurname, req.body.userMail, hash],
+      (err, data) => {
+        if (err) {
+          console.log(err);
+          return res.json({ Message: "Server Side error" });
+        }
+        console.log("inserted data", data);
+        return res.json({ Message: "Success" });
       }
-      console.log("inserted data", data);
-      return res.json({ Message: "Success" });
-    });
+    );
   } catch (error) {
     console.error(error);
     return res.json({ Message: "Error hashing password" });
   }
+});
+
+// Example protected route
+app.get("/protected", verifyToken, (req, res) => {
+  // Accessible only if the token is valid
+  res.json({ Message: "This is a protected route", user: req.user });
 });
 
 app.listen(8081, () => console.log("listening"));

@@ -41,7 +41,7 @@ export const Profile = () => {
 
             <Upload
                 name="profileImage"
-                action="/api/upload-profile-image" // Replace with upload endpoint !!!, save the uploaded file here.
+                action="/api/upload-profile-image" // Replace with your upload endpoint, save the uploaded file here
                 showUploadList={false}
                 onChange={handleChangeProfileImage}
             >
@@ -121,7 +121,9 @@ export const Profile = () => {
             </Form>
 
             <Divider />
-            
+
+            {/* Add similar sections for editing username and changing email */}
+            {/* Example: Edit Username */}
             <Title level={3}>Edit Username</Title>
             <Form name="editUsername" onFinish={onFinish} layout="vertical">
                 <Form.Item
@@ -141,6 +143,7 @@ export const Profile = () => {
 
             <Divider />
 
+            {/* Example: Change Email */}
             <Title level={3}>Change Email</Title>
             <Form name="changeEmail" onFinish={onFinish} layout="vertical">
                 <Form.Item
