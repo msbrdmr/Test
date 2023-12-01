@@ -45,68 +45,71 @@ export const ProfileButtonArea = ({ imageUrl, userName }) => {
     </div>
   );
 
-  return (
-    <div className="profile">
-      <Popover content={renderPopoverContent("message")} trigger="hover">
-        <Button
-          className="utility-button"
-          type="default"
-          icon={<MessageTwoTone />}
-          style={{ borderRadius: "25px" }}
-          onClick={()=>navigate("/chat")}
-        />
-      </Popover>
-      <Popover content={renderPopoverContent("snippets")} trigger="hover">
-        <Button
-          className="utility-button"
-          type="default"
-          icon={<SnippetsTwoTone />}
-          style={{ borderRadius: "25px" }}
-        />
-      </Popover>
-      <Popover content={renderPopoverContent("mail")} trigger="hover">
-        <Button
-          className="utility-button"
-          type="default"
-          icon={<MailTwoTone />}
-          style={{ borderRadius: "25px" }}
-        />
-      </Popover>
-      <Popover content={renderPopoverContent("setting")} trigger="hover">
-        <Button
-          className="utility-button"
-          type="default"
-          icon={<SettingTwoTone />}
-          style={{ borderRadius: "25px" }}
-        />
-      </Popover>
+    return (
+        <div className="profile">
+            <Popover content={renderPopoverContent("message")} trigger="hover">
+                <Button
+                    className="utility-button"
+                    type="default"
+                    icon={<MessageTwoTone />}
+                    style={{ borderRadius: "25px" }}
+                    onClick={()=>navigate("/chat")}
+                />
+            </Popover>
+            <Popover content={renderPopoverContent("snippets")} trigger="hover">
+                <Button
+                    className="utility-button"
+                    type="default"
+                    icon={<SnippetsTwoTone />}
+                    style={{ borderRadius: "25px" }}
+                />
+            </Popover>
+            <Popover content={renderPopoverContent("mail")} trigger="hover">
+                <Button
+                    className="utility-button"
+                    type="default"
+                    icon={<MailTwoTone />}
+                    style={{ borderRadius: "25px" }}
+                />
+            </Popover>
+            <Popover content={renderPopoverContent("setting")} trigger="hover">
+                <Button
+                    className="utility-button"
+                    type="default"
+                    icon={<SettingTwoTone />}
+                    style={{ borderRadius: "25px" }}
+                />
+            </Popover>
 
-      <Button
-        onClick={handleProfileButtonClick}
-        type="default"
-        style={{ borderRadius: "25px 0px 0px 25px" }}
-      >
-        {userName}
-      </Button>
-      <img
-        className="profile-image"
-        src={imageUrl}
-        alt="Profile"
-        style={{
-          borderRadius: "50%",
-          transition: "0.05s",
-          height: "50px",
-          width: "50px",
-          border: isHovered
-            ? "3px solid rgba(0, 0, 0, 0.3)"
-            : "1px solid white",
-          position: "relative",
-          cursor: "pointer",
-        }}
-        onMouseEnter={handleHover}
-        onMouseLeave={handleUnhover}
-        onClick={handleEditClick}
-      />
-    </div>
-  );
+            {/* Dark Mode Switch */}
+
+
+            <Button
+                onClick={handleProfileButtonClick}
+                type="default"
+                style={{ borderRadius: "25px 0px 0px 25px" }}
+            >
+                {userName}
+            </Button>
+            <img
+                className="profile-image"
+                src={imageUrl}
+                alt="Profile"
+                style={{
+                    borderRadius: "50%",
+                    transition: "0.05s",
+                    height: "50px",
+                    width: "50px",
+                    border: isHovered
+                        ? "3px solid rgba(0, 0, 0, 0.3)"
+                        : "1px solid white", // Add outline with less alpha on hover
+                    position: "relative",
+                    cursor: "pointer", // Change cursor to hand
+                }}
+                onMouseEnter={handleHover}
+                onMouseLeave={handleUnhover}
+                onClick={handleEditClick}
+            />
+        </div>
+    );
 };
