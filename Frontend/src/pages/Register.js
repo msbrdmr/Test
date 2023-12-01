@@ -94,3 +94,4 @@ export const RegisterPage = () => {
 		</Components.Container>
 	);
 };
+// export default RegisterPage

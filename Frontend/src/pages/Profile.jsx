@@ -55,7 +55,6 @@ export const Profile = () => {
                 <Descriptions.Item label="Full Name">John Doe</Descriptions.Item>
                 <Descriptions.Item label="Username">john.doe</Descriptions.Item>
                 <Descriptions.Item label="Email">john.doe@example.com</Descriptions.Item>
-                {/* Add more profile information as needed */}
             </Descriptions>
 
             <Divider />
