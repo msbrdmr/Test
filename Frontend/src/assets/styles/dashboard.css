@@ -21,11 +21,20 @@
 }
 .ant-layout .ant-layout-content {
 	transition: 0.2s;
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    margin-top: 60px;
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	margin-top: 60px;
 	border: 2px solid #eee;
+}
+
+.logo-header {
+	position: relative;
+	margin-right: auto;
+	margin-left: 5px;
+	height: 50px;
+	width: auto;
+	cursor: pointer;
 }
 
 .anticon {

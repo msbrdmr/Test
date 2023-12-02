@@ -46,7 +46,7 @@ export const Profile = () => {
                 onChange={handleChangeProfileImage}
             >
                 <Avatar size={128} src={profileImage} icon={<UserOutlined />} />
-                <Button icon={<UploadOutlined />} style={{ marginTop: "8px" }}>
+                <Button icon={<UploadOutlined />} style={{ margin: "18px" }}>
                     Change Profile Image
                 </Button>
             </Upload>

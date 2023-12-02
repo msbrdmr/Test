@@ -76,22 +76,20 @@ export const Home = () => {
                 </Col>
             </Row>
             <Row gutter={16}>
-                <Col span={12}>
+                <Col xs={24} sm={12}>
                     <Card title="Active Team Members" style={{ marginBottom: "16px" }}>
                         <Table dataSource={teamMembersData} columns={teamMembersColumns} pagination={false} />
                     </Card>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} sm={12}>
                     <Card title="Projects" style={{ marginBottom: "16px" }}>
                         <Table dataSource={projectsData} columns={projectsColumns} pagination={false} />
                     </Card>
                 </Col>
             </Row>
 
-
-
             <Row gutter={16}>
-                <Col span={12}>
+                <Col xs={24} sm={12}>
                     <Card title="Recent Activities" style={{ marginBottom: "16px" }}>
                         <Timeline>
                             {activitiesData.map((activity) => (
@@ -102,7 +100,7 @@ export const Home = () => {
                         </Timeline>
                     </Card>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} sm={12}>
                     <Card title="Upcoming Deadlines" style={{ marginBottom: "16px" }}>
                         <List
                             dataSource={deadlinesData}
