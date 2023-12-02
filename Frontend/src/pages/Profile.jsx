@@ -35,7 +35,7 @@ export const Profile = () => {
         }
     };
     return (
-        <div style={{ padding: "30px" }}>
+        <div style={{ padding: "5px" }}>
             <Title level={2}>User Profile</Title>
             <Divider />
 

@@ -44,7 +44,7 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 						<img src="https://i.imgur.com/MgnwjM9.png" alt="Logo" style={{ marginTop: "25px", height: "68px", width: "auto" }} />
 					</div>
 					<SearchBar></SearchBar>
-					<CustomDivider height={50} topMargin={20} bottomMargin={20} />
+					<CustomDivider type="vertical" margin={20} padding={20} />
 
 					<Switch checked={darkMode} onChange={handleDarkModeChange} style={{ marginLeft: "10px", marginRight: "10px" }} />
 
@@ -52,7 +52,7 @@ const Dashboard = ({ darkMode, handleDarkModeChange }) => {
 				</Header>
 
 				<Layout>
-					<Sider width={navbarWidth} theme="light" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+					<Sider style={{ background: darkMode ? "#001529" : "#fff", color: darkMode ? "#fff" : "rgba(0, 0, 0, 0.65)" }} width={navbarWidth} theme="light" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 						<Menu
 							mode="vertical"
 							theme={darkMode ? "dark" : "light"}

@@ -55,7 +55,7 @@ export const Home = () => {
     ];
 
     return (
-        <div style={{ padding: "30px" }}>
+        <div style={{ padding: "5px" }}>
             <Title level={2}>Home</Title>
             <Divider />
             <Row style={{ marginBottom: "16px" }} gutter={16}>

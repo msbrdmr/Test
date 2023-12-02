@@ -28,7 +28,9 @@
 	border: 2px solid #eee;
 }
 
-
+.anticon {
+	font-size: large;
+}
 .search-wrapper {
 	display: flex;
 	margin-right: 20px;

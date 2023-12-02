@@ -11,11 +11,14 @@ const SearchBar = () => {
         <div className="search-wrapper">
             <div className="search-bar">
                 <SearchOutlined className="search-icon" />
-                <CustomDivider height={20} marginLeft={5} marginRight={10} />
-                <Input
+                <CustomDivider type="vertical" margin={20} padding={10} />
+                <input
                     className="search-input"
                     placeholder="Type keywords..."
                     allowClear
+                    style={{
+                        background: "transparent"
+                    }}
                 />
             </div>
         </div>
